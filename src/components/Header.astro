@@ -7,10 +7,10 @@ import HeaderLink from './HeaderLink.astro';
 	<div class="mx-auto flex w-full max-w-content flex-col gap-4 px-6 py-4 md:flex-row md:items-center md:justify-between">
 		<a class="text-lg font-semibold tracking-tight text-ink" href="/">{SITE_TITLE}</a>
 		<nav class="flex flex-wrap items-center gap-2" aria-label="Primary">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/search">Search</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href="/">ホーム</HeaderLink>
+			<HeaderLink href="/blog">レビュー</HeaderLink>
+			<HeaderLink href="/search">検索</HeaderLink>
+			<HeaderLink href="/about">サイトについて</HeaderLink>
 		</nav>
 		<nav class="flex items-center gap-3 text-ink/70" aria-label="Social">
 			<a
@@ -19,7 +19,7 @@ import HeaderLink from './HeaderLink.astro';
 				target="_blank"
 				rel="noreferrer"
 			>
-				<span class="sr-only">Follow Astro on Mastodon</span>
+				<span class="sr-only">Mastodon</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
 					><path
 						fill="currentColor"
@@ -33,7 +33,7 @@ import HeaderLink from './HeaderLink.astro';
 				target="_blank"
 				rel="noreferrer"
 			>
-				<span class="sr-only">Follow Astro on Twitter</span>
+				<span class="sr-only">X (formerly Twitter)</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
 					><path
 						fill="currentColor"
@@ -47,7 +47,7 @@ import HeaderLink from './HeaderLink.astro';
 				target="_blank"
 				rel="noreferrer"
 			>
-				<span class="sr-only">Go to Astro's GitHub repo</span>
+				<span class="sr-only">GitHub</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
 					><path
 						fill="currentColor"
