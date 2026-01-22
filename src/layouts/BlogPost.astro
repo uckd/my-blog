@@ -11,7 +11,7 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="ja">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
@@ -22,11 +22,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			<article class="mx-auto grid max-w-content gap-12">
 				<header class="mx-auto grid max-w-narrow gap-4 text-center">
 					<div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">
-						<span>Published</span>
+						<span>公開日</span>
 						<FormattedDate date={pubDate} />
 						{updatedDate && (
 							<span class="normal-case text-inkMuted">
-								Updated <FormattedDate date={updatedDate} />
+								更新日 <FormattedDate date={updatedDate} />
 							</span>
 						)}
 					</div>

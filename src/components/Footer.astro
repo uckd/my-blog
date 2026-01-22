@@ -11,8 +11,8 @@ const today = new Date();
 			<p class="text-inkMuted">{SITE_DESCRIPTION}</p>
 		</div>
 		<nav class="grid gap-2 text-sm font-semibold text-ink/80" aria-label="Footer">
-			<a class="transition hover:text-ink" href="/blog">Blog</a>
-			<a class="transition hover:text-ink" href="/about">About</a>
+			<a class="transition hover:text-ink" href="/blog">レビュー</a>
+			<a class="transition hover:text-ink" href="/about">サイトについて</a>
 			<a class="transition hover:text-ink" href="/rss.xml">RSS</a>
 		</nav>
 		<div class="space-y-4">
@@ -23,7 +23,7 @@ const today = new Date();
 					target="_blank"
 					rel="noreferrer"
 				>
-					<span class="sr-only">Follow Astro on Mastodon</span>
+					<span class="sr-only">Mastodon</span>
 					<svg
 						viewBox="0 0 16 16"
 						aria-hidden="true"
@@ -42,7 +42,7 @@ const today = new Date();
 					target="_blank"
 					rel="noreferrer"
 				>
-					<span class="sr-only">Follow Astro on Twitter</span>
+					<span class="sr-only">X (formerly Twitter)</span>
 					<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28" astro-icon="social/twitter"
 						><path
 							fill="currentColor"
@@ -56,7 +56,7 @@ const today = new Date();
 					target="_blank"
 					rel="noreferrer"
 				>
-					<span class="sr-only">Go to Astro's GitHub repo</span>
+					<span class="sr-only">GitHub</span>
 					<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28" astro-icon="social/github"
 						><path
 							fill="currentColor"
@@ -66,7 +66,7 @@ const today = new Date();
 				</a>
 			</nav>
 			<div class="text-xs uppercase tracking-[0.3em] text-inkMuted">
-				&copy; {today.getFullYear()} Your name here. All rights reserved.
+				&copy; {today.getFullYear()} Sonic Notes. All rights reserved.
 			</div>
 		</div>
 	</div>
