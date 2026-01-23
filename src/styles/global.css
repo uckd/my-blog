@@ -8,7 +8,7 @@
 	}
 
 	body {
-		@apply bg-sand text-ink font-sans antialiased;
+		@apply bg-sand text-ink font-sans antialiased leading-relaxed;
 		background-image:
 			radial-gradient(circle at 12% 12%, rgba(15, 118, 110, 0.12), transparent 45%),
 			radial-gradient(circle at 88% 18%, rgba(250, 204, 21, 0.12), transparent 45%),
@@ -42,6 +42,13 @@
 		@apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
 	}
 
+	button:focus-visible,
+	input:focus-visible,
+	select:focus-visible,
+	textarea:focus-visible {
+		@apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+	}
+
 	img {
 		@apply max-w-full rounded-3xl;
 	}
@@ -66,9 +73,32 @@
 		background-color: #c9f0ea;
 		color: #115e59;
 	}
+
+	main:focus-visible {
+		@apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			scroll-behavior: auto !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
 }
 
 @layer components {
+	.skip-link {
+		@apply sr-only;
+	}
+
+	.skip-link:focus {
+		@apply not-sr-only absolute left-6 top-4 z-50 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink shadow-soft ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+	}
+
 	#search {
 		@apply mt-6;
 	}
