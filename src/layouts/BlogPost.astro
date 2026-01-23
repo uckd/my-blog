@@ -12,43 +12,53 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="ja">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
 
-	<body>
-		<Header />
-		<main id="main-content" tabindex="-1">
-			<article class="mx-auto grid max-w-content gap-12">
-				<header class="mx-auto grid max-w-narrow gap-4 text-center">
-					<div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">
-						<span>公開日</span>
-						<FormattedDate date={pubDate} />
-						{updatedDate && (
-							<span class="normal-case text-inkMuted">
-								更新日 <FormattedDate date={updatedDate} />
-							</span>
-						)}
-					</div>
-					<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">{title}</h1>
-					{description && <p class="text-lg text-inkMuted">{description}</p>}
-				</header>
-				{heroImage && (
-					<figure class="overflow-hidden rounded-3xl border border-line shadow-glow">
-						<Image
-							class="h-full w-full object-cover"
-							width={1200}
-							height={600}
-							src={heroImage}
-							alt={title}
-						/>
-					</figure>
-				)}
-				<div class="prose prose-slate max-w-none prose-a:text-accent prose-a:font-semibold prose-blockquote:border-accent prose-hr:border-line">
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+  <body>
+    <Header />
+    <main id="main-content" tabindex="-1">
+      <article class="mx-auto grid max-w-content gap-12">
+        <header class="mx-auto grid max-w-narrow gap-4 text-center">
+          <div
+            class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted"
+          >
+            <span>公開日</span>
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <span class="normal-case text-inkMuted">
+                  更新日 <FormattedDate date={updatedDate} />
+                </span>
+              )
+            }
+          </div>
+          <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+            {title}
+          </h1>
+          {description && <p class="text-lg text-inkMuted">{description}</p>}
+        </header>
+        {
+          heroImage && (
+            <figure class="overflow-hidden rounded-3xl border border-line shadow-glow">
+              <Image
+                class="h-full w-full object-cover"
+                width={1200}
+                height={600}
+                src={heroImage}
+                alt={title}
+              />
+            </figure>
+          )
+        }
+        <div
+          class="prose prose-slate max-w-none prose-a:text-accent prose-a:font-semibold prose-blockquote:border-accent prose-hr:border-line dark:prose-invert"
+        >
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

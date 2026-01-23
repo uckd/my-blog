@@ -7,56 +7,52 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main id="main-content" tabindex="-1">
-			<section class="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-				<div class="space-y-6">
-					<p class="text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">
-						Music editorial
-					</p>
-					<h1 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-						{SITE_TITLE}
-					</h1>
-					<p class="max-w-xl text-lg text-inkMuted">{SITE_DESCRIPTION}</p>
-					<div class="flex flex-wrap gap-3">
-						<a
-							class="inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentStrong"
-							href="/blog"
-						>
-							最新レビューを読む
-						</a>
-						<a
-							class="inline-flex items-center justify-center rounded-full border border-line bg-white/70 px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink/30 hover:bg-white"
-							href="/about"
-						>
-							編集方針について
-						</a>
-					</div>
-				</div>
-				<div class="rounded-3xl border border-line bg-surface/90 p-8 shadow-glow backdrop-blur">
-					<p class="text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">Focus</p>
-					<h2 class="mt-3 text-2xl font-semibold tracking-tight">このサイトで扱うこと</h2>
-					<ul class="mt-6 space-y-4 text-inkMuted">
-						<li class="flex items-start gap-3">
-							<span class="mt-2 h-2 w-2 rounded-full bg-accent"></span>
-							<span>新作アルバムのレビューと、楽曲の読み解き。</span>
-						</li>
-						<li class="flex items-start gap-3">
-							<span class="mt-2 h-2 w-2 rounded-full bg-accent"></span>
-							<span>アーティストへのインタビューで掘り下げる制作背景。</span>
-						</li>
-						<li class="flex items-start gap-3">
-							<span class="mt-2 h-2 w-2 rounded-full bg-accent"></span>
-							<span>ライブ現場の空気感や、リリース前後のシーン動向。</span>
-						</li>
-					</ul>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main id="main-content" tabindex="-1">
+      <section class="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="space-y-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">
+            Music editorial
+          </p>
+          <h1 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+            {SITE_TITLE}
+          </h1>
+          <p class="max-w-xl text-lg text-inkMuted">{SITE_DESCRIPTION}</p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              class="inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentStrong"
+              href="/blog"
+            >
+              最新記事を読む
+            </a>
+            <a
+              class="inline-flex items-center justify-center rounded-full border border-line bg-surface/80 px-5 py-3 text-sm font-semibold text-ink transition hover:border-ink/30 hover:bg-surface"
+              href="/about"
+            >
+              編集方針について
+            </a>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-line bg-surface/90 p-8 shadow-glow backdrop-blur">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">Focus</p>
+          <h2 class="mt-3 text-2xl font-semibold tracking-tight">このサイトで扱うこと</h2>
+          <ul class="mt-6 space-y-4 text-inkMuted">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-2 w-2 rounded-full bg-accent"></span>
+              <span>新作アルバムのレビューと、楽曲の読み解き。</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-2 w-2 rounded-full bg-accent"></span>
+              <span>アーティストへのインタビューで掘り下げる制作背景。</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

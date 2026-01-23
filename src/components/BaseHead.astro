@@ -7,9 +7,9 @@ import { SITE_TITLE } from '../consts';
 import '../styles/global.css';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: ImageMetadata;
+  title: string;
+  description: string;
+  image?: ImageMetadata;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -20,15 +20,58 @@ const { title, description, image = FallbackImage } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#f7f3ec" />
+<meta name="theme-color" content="#f9f8f4" />
+<script>
+  // Avoid theme flash and honor system preference unless the user overrides it.
+  (() => {
+    const storageKey = 'theme-preference';
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const getStoredTheme = () => localStorage.getItem(storageKey);
+    const resolveTheme = () => {
+      const stored = getStoredTheme();
+      if (stored === 'light' || stored === 'dark') {
+        return stored;
+      }
+      return darkQuery.matches ? 'dark' : 'light';
+    };
+
+    const applyTheme = (theme: string) => {
+      const isDark = theme === 'dark';
+      document.documentElement.classList.toggle('dark', isDark);
+      document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        meta.setAttribute('content', isDark ? '#121417' : '#f9f8f4');
+      }
+    };
+
+    applyTheme(resolveTheme());
+
+    darkQuery.addEventListener('change', (event) => {
+      const stored = getStoredTheme();
+      if (stored !== 'light' && stored !== 'dark') {
+        applyTheme(event.matches ? 'dark' : 'light');
+      }
+    });
+
+    window.__themePreference = {
+      get: resolveTheme,
+      set: (theme) => {
+        localStorage.setItem(storageKey, theme);
+        applyTheme(theme);
+      },
+    };
+  })();
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
 

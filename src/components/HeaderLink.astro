@@ -5,19 +5,19 @@ type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
+const subpath = pathname.match(/[^/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
 <a
-	href={href}
-	class:list={[
-		'rounded-full px-3 py-1 text-sm font-semibold transition',
-		isActive ? 'bg-accentSoft text-accentStrong' : 'text-ink/70 hover:bg-ink/5 hover:text-ink',
-		className,
-	]}
-	aria-current={isActive ? 'page' : undefined}
-	{...props}
+  href={href}
+  class:list={[
+    'rounded-full px-3 py-1 text-sm font-semibold transition',
+    isActive ? 'bg-accentSoft text-accentStrong' : 'text-ink/70 hover:bg-ink/5 hover:text-ink',
+    className,
+  ]}
+  aria-current={isActive ? 'page' : undefined}
+  {...props}
 >
-	<slot />
+  <slot />
 </a>

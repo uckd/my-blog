@@ -7,32 +7,54 @@ import { SITE_TITLE } from '../consts';
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<BaseHead title={`検索 | ${SITE_TITLE}`} description="レビューとインタビューを検索します。" />
-		<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-	</head>
-	<body data-pagefind-ignore>
-		<Header />
-		<main id="main-content" tabindex="-1">
-			<section class="mb-10 max-w-narrow space-y-4">
-				<p class="text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">Search</p>
-				<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">検索</h1>
-				<p class="text-lg text-inkMuted">作品名やアーティスト名から記事を探せます。</p>
-			</section>
-			<div id="search" data-pagefind-ignore></div>
-		</main>
-		<Footer />
-		<script src="/pagefind/pagefind-ui.js" is:inline></script>
-		<script is:inline>
-			window.addEventListener('DOMContentLoaded', () => {
-				if (window.PagefindUI) {
-					new PagefindUI({
-						element: '#search',
-						showImages: false,
-						highlightParam: 'highlight',
-					});
-				}
-			});
-		</script>
-	</body>
+  <head>
+    <BaseHead title={`検索 | ${SITE_TITLE}`} description="レビューとインタビューを検索します。" />
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  </head>
+  <body data-pagefind-ignore>
+    <Header />
+    <main id="main-content" tabindex="-1">
+      <section class="mb-10 max-w-narrow space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-inkMuted">Search</p>
+        <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">検索</h1>
+        <p class="text-lg text-inkMuted">作品名やアーティスト名から記事を探せます。</p>
+      </section>
+      <div id="search" data-pagefind-ignore>
+        <div id="search-fallback" class="space-y-3">
+          <label for="search-fallback-input" class="sr-only">検索</label>
+          <input
+            id="search-fallback-input"
+            class="pagefind-ui__search-input"
+            type="search"
+            placeholder="検索..."
+          />
+          <p id="search-fallback-note" class="text-sm text-inkMuted" hidden>
+            検索インデックスが未生成のため、結果は表示されません。`npm run build` 後に `npm run
+            preview` で確認してください。
+          </p>
+        </div>
+      </div>
+    </main>
+    <Footer />
+    <script src="/pagefind/pagefind-ui.js" is:inline></script>
+    <script is:inline>
+      window.addEventListener('DOMContentLoaded', () => {
+        const fallback = document.getElementById('search-fallback');
+        const fallbackNote = document.getElementById('search-fallback-note');
+        const PagefindUI = window.PagefindUI;
+        if (PagefindUI) {
+          if (fallback) {
+            fallback.remove();
+          }
+          new PagefindUI({
+            element: '#search',
+            showImages: false,
+            highlightParam: 'highlight',
+          });
+        } else if (fallbackNote) {
+          fallbackNote.hidden = false;
+        }
+      });
+    </script>
+  </body>
 </html>

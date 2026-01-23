@@ -1,131 +1,129 @@
+@import './palette.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-	:root {
-		color-scheme: light;
-	}
+  body {
+    @apply bg-sand text-ink font-sans antialiased leading-relaxed;
+    background-image:
+      radial-gradient(circle at 12% 12%, var(--body-radial-1), transparent 45%),
+      radial-gradient(circle at 88% 18%, var(--body-radial-2), transparent 45%),
+      linear-gradient(180deg, var(--body-linear-1), var(--body-linear-2));
+  }
 
-	body {
-		@apply bg-sand text-ink font-sans antialiased leading-relaxed;
-		background-image:
-			radial-gradient(circle at 12% 12%, rgba(15, 118, 110, 0.12), transparent 45%),
-			radial-gradient(circle at 88% 18%, rgba(250, 204, 21, 0.12), transparent 45%),
-			linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 243, 236, 0.75));
-	}
+  main {
+    @apply mx-auto w-full max-w-content px-6 pb-24 pt-10;
+  }
 
-	main {
-		@apply mx-auto w-full max-w-content px-6 pb-24 pt-10;
-	}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight text-ink;
+  }
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply font-semibold tracking-tight text-ink;
-	}
+  p {
+    @apply text-ink/85;
+  }
 
-	p {
-		@apply text-ink/85;
-	}
+  a {
+    @apply text-accent transition-colors duration-200;
+  }
+  a:hover {
+    @apply text-accentStrong;
+  }
+  a:focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+  }
 
-	a {
-		@apply text-accent transition-colors duration-200;
-	}
-	a:hover {
-		@apply text-accentStrong;
-	}
-	a:focus-visible {
-		@apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
-	}
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+  }
 
-	button:focus-visible,
-	input:focus-visible,
-	select:focus-visible,
-	textarea:focus-visible {
-		@apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
-	}
+  img {
+    @apply max-w-full rounded-3xl;
+  }
 
-	img {
-		@apply max-w-full rounded-3xl;
-	}
+  code {
+    @apply rounded-lg bg-surfaceMuted px-1.5 py-0.5 text-sm;
+  }
 
-	code {
-		@apply rounded-lg bg-surfaceMuted px-1.5 py-0.5 text-sm;
-	}
+  pre {
+    @apply overflow-x-auto rounded-3xl bg-surface p-6 shadow-soft;
+  }
 
-	pre {
-		@apply overflow-x-auto rounded-3xl bg-surface p-6 shadow-soft;
-	}
+  blockquote {
+    @apply border-l-4 border-accent pl-6 text-inkMuted;
+  }
 
-	blockquote {
-		@apply border-l-4 border-accent pl-6 text-inkMuted;
-	}
+  hr {
+    @apply my-10 border-line;
+  }
 
-	hr {
-		@apply my-10 border-line;
-	}
+  ::selection {
+    background-color: rgb(var(--color-selection-bg));
+    color: rgb(var(--color-selection-text));
+  }
 
-	::selection {
-		background-color: #c9f0ea;
-		color: #115e59;
-	}
+  main:focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+  }
 
-	main:focus-visible {
-		@apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		*,
-		*::before,
-		*::after {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			scroll-behavior: auto !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
-	.skip-link {
-		@apply sr-only;
-	}
+  .skip-link {
+    @apply sr-only;
+  }
 
-	.skip-link:focus {
-		@apply not-sr-only absolute left-6 top-4 z-50 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink shadow-soft ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
-	}
+  .skip-link:focus {
+    @apply not-sr-only absolute left-6 top-4 z-50 rounded-full bg-surface px-4 py-2 text-sm font-semibold text-ink shadow-soft ring-2 ring-accent/60 ring-offset-2 ring-offset-sand;
+  }
 
-	#search {
-		@apply mt-6;
-	}
+  #search {
+    @apply mt-6;
+  }
 
-	.pagefind-ui__search-input {
-		@apply w-full rounded-full border border-line bg-white/85 px-5 py-3 text-base shadow-soft focus:outline-none focus:ring-2 focus:ring-accent/60;
-	}
+  .pagefind-ui__search-input {
+    @apply w-full rounded-full border border-line bg-surface/85 px-5 py-3 text-base shadow-soft focus:outline-none focus:ring-2 focus:ring-accent/60;
+  }
 
-	.pagefind-ui__results {
-		@apply mt-8 grid gap-6;
-	}
+  .pagefind-ui__results {
+    @apply mt-8 grid gap-6;
+  }
 
-	.pagefind-ui__result {
-		@apply rounded-3xl border border-line bg-surface/90 p-6 shadow-soft;
-	}
+  .pagefind-ui__result {
+    @apply rounded-3xl border border-line bg-surface/90 p-6 shadow-soft;
+  }
 
-	.pagefind-ui__result-title {
-		@apply text-lg font-semibold text-ink;
-	}
+  .pagefind-ui__result-title {
+    @apply text-lg font-semibold text-ink;
+  }
 
-	.pagefind-ui__result-excerpt {
-		@apply text-inkMuted;
-	}
+  .pagefind-ui__result-excerpt {
+    @apply text-inkMuted;
+  }
 }
 
 @layer utilities {
-	.text-balance {
-		text-wrap: balance;
-	}
+  .text-balance {
+    text-wrap: balance;
+  }
 }
